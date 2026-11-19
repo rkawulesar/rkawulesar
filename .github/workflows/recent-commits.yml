@@ -1,0 +1,108 @@
+name: Update recent commits
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - README.md
+      - .github/workflows/recent-commits.yml
+  schedule:
+    - cron: "17 */6 * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: profile-recent-commits
+  cancel-in-progress: false
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Fetch public commits and update README
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_USER: ${{ github.repository_owner }}
+        run: |
+          python3 - << 'PY'
+          import json
+          import os
+          from pathlib import Path
+          import re
+          import urllib.parse
+          import urllib.request
+
+          user = os.environ["GITHUB_USER"]
+          query = urllib.parse.urlencode({
+              "q": f"author:{user} is:public",
+              "sort": "author-date",
+              "order": "desc",
+              "per_page": 8,
+          })
+          headers = {
+              "Accept": "application/vnd.github+json",
+              "User-Agent": "GitHub-profile-recent-commits",
+          }
+          token = os.environ.get("GITHUB_TOKEN")
+          if token:
+              headers["Authorization"] = f"Bearer {token}"
+          request = urllib.request.Request(
+              f"https://api.github.com/search/commits?{query}", headers=headers
+          )
+          with urllib.request.urlopen(request, timeout=30) as response:
+              payload = json.load(response)
+          if payload.get("incomplete_results"):
+              raise RuntimeError("Commit search is incomplete. Retry the workflow.")
+
+          def markdown_text(value):
+              return re.sub(r"([\\`*_{}\[\]()<>#!|])", r"\\\1", value)
+
+          lines = []
+          for commit in payload["items"]:
+              sha = commit["sha"][:7]
+              repository = markdown_text(commit["repository"]["name"])
+              message_lines = commit["commit"]["message"].splitlines()
+              message = message_lines[0].strip() if message_lines else "Untitled commit"
+              message = message or "Untitled commit"
+              if len(message) > 70:
+                  message = message[:67] + "..."
+              message = markdown_text(message)
+              date = commit["commit"]["author"]["date"][:10]
+              lines.append(
+                  f"- [`{sha}`]({commit['html_url']}) **{repository}** "
+                  f"— {message} · <sub>{date}</sub>"
+              )
+          if not lines:
+              lines = ["- No public commits found yet."]
+
+          start, end = "<!-- COMMITS:START -->", "<!-- COMMITS:END -->"
+          path = Path("README.md")
+          text = path.read_text(encoding="utf-8")
+          if text.count(start) != 1 or text.count(end) != 1:
+              raise RuntimeError("README must have one pair of commit markers.")
+          block = start + "\n" + "\n".join(lines) + "\n" + end
+          updated, count = re.subn(
+              re.escape(start) + r".*?" + re.escape(end),
+              lambda _: block, text, flags=re.S
+          )
+          if count != 1:
+              raise RuntimeError("README commit markers are out of order.")
+          path.write_text(updated, encoding="utf-8")
+          PY
+
+      - name: Commit if changed
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add README.md
+          if git diff --cached --quiet; then
+            exit 0
+          fi
+          git commit -m "Update recent commits"
+          git pull --rebase
+          git push
