@@ -1,4 +1,12 @@
-<img src="assets/profile-header.svg" alt="Rivaan Kawulesar — Junior Software Developer. Full-stack applications, thoughtful architecture, from the interface to the API." width="100%" />
+<p align="center">
+  <img src="https://capsule-render.vercel.app/api?type=waving&amp;color=0%3A102d26%2C50%3A21483a%2C100%3A355b48&amp;height=220&amp;section=header&amp;text=Rivaan%20Kawulesar&amp;fontSize=52&amp;fontColor=F4F0E3&amp;animation=fadeIn&amp;fontAlignY=38&amp;desc=Junior%20Software%20Developer&amp;descSize=20&amp;descAlignY=60" alt="Rivaan Kawulesar — Junior Software Developer" width="100%" />
+</p>
+
+<p align="center">
+  <a href="https://github.com/rkawulesar">
+    <img src="https://readme-typing-svg.demolab.com?font=Fira%20Code&amp;weight=600&amp;size=22&amp;duration=3000&amp;pause=1000&amp;color=8EB89A&amp;center=true&amp;vCenter=true&amp;width=700&amp;lines=Full-stack%20web%20applications%3BREST%20APIs%20%26%20Android%20apps%3BC%23%20%C2%B7%20ASP.NET%20Core%20%C2%B7%20React%20%C2%B7%20Kotlin%3BJWT%20%C2%B7%20RBAC%20%C2%B7%20CI%2FCD%20%C2%B7%20Azure" alt="Animated introduction highlighting full-stack web applications, REST APIs and Android development" />
+  </a>
+</p>
 
 <p align="center">
   <a href="#selected-work">Selected work</a> &nbsp; / &nbsp;
@@ -109,8 +117,6 @@ These academic projects include individual and group work. The group repositorie
 
 <a href="https://github.com/rkawulesar?tab=overview"><img src="https://ghchart.rshah.org/rkawulesar" alt="Rivaan Kawulesar's GitHub contribution calendar for the past year" width="100%" /></a>
 
-<details>
-<summary>Contribution animation</summary>
 <p align="center">
   <picture>
     <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/rkawulesar/rkawulesar/output/github-snake-dark.svg" />
@@ -118,8 +124,11 @@ These academic projects include individual and group work. The group repositorie
     <img alt="Contribution snake animation" src="https://raw.githubusercontent.com/rkawulesar/rkawulesar/output/github-snake.svg" width="100%" />
   </picture>
 </p>
-</details>
 
 ---
 
 <p align="center"><sub>Rivaan Kawulesar &nbsp; / &nbsp; Software, from interface to infrastructure.</sub></p>
+
+<p align="center">
+  <img src="https://capsule-render.vercel.app/api?type=waving&amp;color=0%3A102d26%2C50%3A21483a%2C100%3A355b48&amp;height=120&amp;section=footer" alt="" width="100%" />
+</p>
