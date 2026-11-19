@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="330" viewBox="0 0 1200 330" role="img" aria-labelledby="title desc">
+  <title id="title">Rivaan Kawulesar — Junior Software Developer</title>
+  <desc id="desc">A dark green and cream portfolio header with an abstract geometric illustration.</desc>
+  <defs>
+    <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse"><path d="M40 0H0V40" fill="none" stroke="#a9c5ae" stroke-opacity=".07"/></pattern>
+  </defs>
+  <rect width="1200" height="330" rx="20" fill="#102b25"/>
+  <rect width="1200" height="330" rx="20" fill="url(#grid)"/>
+  <rect x="48" y="48" width="26" height="3" rx="1.5" fill="#a9c5ae"/>
+  <text x="88" y="55" fill="#a9c5ae" font-family="Segoe UI,Arial,sans-serif" font-size="13" font-weight="600" letter-spacing="3">SOFTWARE / WEB / MOBILE</text>
+  <text x="46" y="139" fill="#f4f0e3" font-family="Segoe UI,Arial,sans-serif" font-size="56" font-weight="700" letter-spacing="-2">Rivaan Kawulesar</text>
+  <text x="49" y="180" fill="#c2d2c7" font-family="Segoe UI,Arial,sans-serif" font-size="23">Junior Software Developer</text>
+  <path d="M49 221H710" stroke="#3a5549"/>
+  <text x="49" y="257" fill="#f4f0e3" font-family="Segoe UI,Arial,sans-serif" font-size="16">Full-stack applications. Thoughtful architecture.</text>
+  <text x="49" y="283" fill="#a9c5ae" font-family="Segoe UI,Arial,sans-serif" font-size="16">From the interface to the API.</text>
+  <g fill="none" stroke="#668f78" stroke-width="1.5">
+    <rect x="849" y="62" width="226" height="206" rx="16"/>
+    <rect x="877" y="90" width="226" height="206" rx="16" fill="#17382e"/>
+    <path d="M877 134H1103"/>
+    <path d="M907 178L890 195L907 212M1073 178L1090 195L1073 212" stroke="#a9c5ae" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+    <rect x="942" y="169" width="96" height="64" rx="8" stroke="#a9c5ae"/>
+    <path d="M966 189H1014M966 204H997" stroke="#a9c5ae" stroke-linecap="round"/>
+  </g>
+  <g fill="#a9c5ae"><circle cx="898" cy="112" r="3"/><circle cx="911" cy="112" r="3"/><circle cx="924" cy="112" r="3"/></g>
+</svg>
